@@ -142,6 +142,10 @@ After the mobile app is registered, it is displayed on the console.
 ----
 {route-ionic-showcase-server-host}
 ----
+. Click *Create*.
+
+. Navigate to the *Configuration* tab of the *mobile app* in the Mobile Developer Console.
+
 . Copy and save the `mobile-services.json` file, you will require this file in a later task.
 
 [time=10]
