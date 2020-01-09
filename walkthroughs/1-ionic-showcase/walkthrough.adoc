@@ -2,7 +2,8 @@
 :integreatly-name: Managed Integration
 :data-sync-name: Data Sync
 :data-sync-showcase-app: Data Sync showcase application
-:customer-sso-name: End user SSO instance
+:customer-sso-name: Customer application SSO instance
+:sso-realm-url: {user-sso-url}/auth/admin/walkthroughs/console/index.html
 
 = Adding Data Sync to your Application with GraphQL
 
@@ -132,12 +133,15 @@ In this task, we will protect both the frontend and the backend of the {data-syn
 
 === Configure and protect the frontend app
 
-. Make sure you have access to a realm in the {customer-sso-name}. If you don't, you can ask your customer-admin user to create one for you. 
-. Login to the realm in the {customer-sso-name}.
+NOTE: The `walkthroughs` realm is shared with all users on the cluster. Do not use this realm for sensitive applications.
+
+. Navigate to the link:{sso-realm-url}[SSO Realm, window="_blank"].
+. Enter the username `walkthroughs` and password `password` if prompted.
+. Details for the `walkthroughs` realm are displayed upon login success.
 . Create a new client for the frontend app:
 .. Choose *Clients* under *Configure* in the menu.
 .. Click on the *Create* button on the top-right corner to create a new client.
-.. Enter `showcase-app-client` for Client ID. Do not change any other fields.
+.. Enter `{user-username}-frontend` for Client ID. Do not change any other fields.
 .. Save the client. You should see the *Settings* page of the client.
 .. Change `Valid Redirect URIs` to '{route-ionic-showcase-server-host}*'
 .. Change `Web Origins` to '*'
@@ -169,11 +173,14 @@ Next we need to update the configuration of the frontend app to secure it:
 
 === Configure and protect the backend app
 
-. Login to the realm in the {customer-sso-name}.
+NOTE: The `walkthroughs` realm is shared with all users on the cluster. Do not use this realm for sensitive applications.
+
+. Navigate to the link:{sso-realm-url}[SSO Realm, window="_blank"].
+. Enter the username `walkthroughs` and password `password` if prompted.
 . Create a new client for the backend:
 .. Choose *Clients* under *Configure* in the menu.
 .. Click on the *Create* button on the top-right corner to start creating a new client.
-.. Enter `showcase-app-server` for Client ID.  Do not change the rest of the fields.
+.. Enter `{user-username}-server` for Client ID.  Do not change the rest of the fields.
 .. Save the client. You should see the *Settings* page of the client.
 .. Change the `Access Type` to `bearer-only` and save again.
 .. Click on the *Installation* tab, and select `OIDC JSON` format. Copy the content or use the `Download` button to save the configuration file to a directory on the computer.
